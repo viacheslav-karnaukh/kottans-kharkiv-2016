@@ -1,0 +1,16 @@
+source "https://rubygems.org"
+
+gem 'guard'
+gem 'guard-shell'
+gem 'rspec'
+gem 'rb-fsevent'
+gem 'fuubar'
+
+# creates pre-commit hook to run tests before commit
+# prevents commit in case of test fail
+`cat > ../../.git/hooks/pre-commit <<EOF
+#!/bin/sh
+cd week1/Ebuberable
+bundle exec rspec
+EOF
+chmod u+x ../../.git/hooks/pre-commit`
